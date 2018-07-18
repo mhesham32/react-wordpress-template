@@ -5,7 +5,7 @@ export default class HomePosts extends Component {
     posts: [],
   };
 
-  async componentWillMount() {
+  async componentdidMount() {
     const res = await fetch('http://localhost/wordpress/wp-json/wp/v2/tech');
     const data = await res.json();
     this.setState({ posts: data });
@@ -23,7 +23,7 @@ export default class HomePosts extends Component {
                   src={post.better_featured_image.source_url}
                   alt="Card cap"
                 />
-                <div className="card-body">
+                <div className="">
                   <h1 className="home__post--heading h4">
                     {post.title.rendered}
                   </h1>

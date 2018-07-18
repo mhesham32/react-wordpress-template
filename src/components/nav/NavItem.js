@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const NavItem = ({ active, dropdown, name, links }) =>
+const NavItem = ({ active, dropdown, name, links, isChild }) =>
   dropdown ? (
     <li className="nav-item dropdown">
       <Link
@@ -25,11 +25,13 @@ const NavItem = ({ active, dropdown, name, links }) =>
       </div>
     </li>
   ) : (
-    <li className={`nav-item ${active && 'active'}`}>
-      <Link className="nav-link" to={name === 'Home' ? '/' : `/${name}`}>
-        {name} {active && <span className="sr-only">(current)</span>}
-      </Link>
-    </li>
+    !isChild && (
+      <li className={`nav-item ${active && 'active'}`}>
+        <Link className="nav-link" to={name === 'Home' ? '/' : `/${name}`}>
+          {name} {active && <span className="sr-only">(current)</span>}
+        </Link>
+      </li>
+    )
   );
 
 NavItem.propTypes = {
@@ -37,6 +39,7 @@ NavItem.propTypes = {
   dropdown: PropTypes.bool.isRequired,
   links: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string.isRequired,
+  isChild: PropTypes.bool.isRequired,
 };
 
 NavItem.defaultProps = {
