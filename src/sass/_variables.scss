@@ -1,0 +1,38 @@
+$color-primary: rgb(5, 147, 133);
+$color-primary-dark: rgb(0, 77, 90);
+$color-primary-light: rgb(126, 219, 211);
+
+$color-white: #f2fafc;
+$color-grey: #f4f5f7;
+$color-grey-light: #fafbfc;
+$color-grey-dark: #c3c9d0;
+$color-black: #525c65;
+$color-red-light: rgb(246, 50, 62);
+$color-red-dark: #791e16;
+$color-yellow-light: rgb(249, 190, 1);
+$color-yellow-dark: #f7bf00;
+$color-blue-light: rgb(26, 203, 232);
+
+$text-orange: rgb(210, 158, 165);
+$text-dark: #636768;
+$text-light: #c1fdf7;
+$text-header: $color-primary-dark;
+$text-black: $color-black;
+
+$background-light: $color-primary-light;
+$background-dark: $color-primary-dark;
+
+$box-shadow: 5rem 5rem 25rem 0 rgba(black, 0.2);
+$light-box-shadow: 0 1rem 2rem rgba($color-grey-dark, 0.3);
+
+$mini-card-list: $color-yellow-light, $color-red-light, $color-blue-light;
+$text-gradient: linear-gradient(
+  to right bottom,
+  $background-light,
+  $background-dark
+);
+$yellow-gradient: linear-gradient(
+  to right bottom,
+  $color-yellow-light,
+  $color-yellow-dark
+);
