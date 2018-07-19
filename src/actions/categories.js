@@ -1,25 +1,25 @@
 import * as types from './actionTypes';
 import * as fromApi from '../api/api';
 
-const requestData = () => ({
-  type: types.REQUEST_DATA,
+const requestCategoriesData = () => ({
+  type: types.REQUEST_CATEGORIES_DATA,
 });
 
-const fetchDataSucces = data => ({
-  type: types.FETCH_DATA_SUCCESS,
+const fetchCategoriesSuccess = data => ({
+  type: types.FETCH_CATEGORIES_SUCCESS,
   data,
 });
 
-const fetchDataFailure = () => ({ type: types.FETCH_DATA_FAILURE });
+const fetchCategoriesFailure = () => ({ type: types.FETCH_CATEGORIES_FAILURE });
 
 export const fetchCateogries = () => dispatch => {
-  dispatch(requestData());
+  dispatch(requestCategoriesData());
   return fromApi.fetchCategories().then(
     response => {
-      dispatch(fetchDataSucces(response));
+      dispatch(fetchCategoriesSuccess(response));
     },
     err => {
-      dispatch(fetchDataFailure);
+      dispatch(fetchCategoriesFailure);
     }
   );
 };

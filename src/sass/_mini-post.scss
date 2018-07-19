@@ -1,0 +1,43 @@
+.mini-post {
+  min-height: 30rem;
+  background-color: $color-grey-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  border-radius: 0.2rem;
+  overflow: hidden;
+
+  &__container {
+    padding: 1rem;
+  }
+
+  &__image {
+    &--container {
+      height: 20rem;
+      width: 100%;
+    }
+    height: 100%;
+    width: 100%;
+    background: center center;
+    background-size: cover;
+  }
+
+  &__title {
+    color: $color-black;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 100;
+    padding: 1rem;
+  }
+
+  p,
+  &__desc {
+    line-height: 1.7;
+    max-width: 75ch;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 1rem;
+  }
+}

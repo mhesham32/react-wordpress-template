@@ -1,0 +1,42 @@
+.loading-post {
+  height: 30rem;
+  width: 23%;
+  background-color: $color-grey-light;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  &__image {
+    height: 50%;
+    width: 100%;
+    background-color: $color-grey-dark;
+  }
+  &__header {
+    margin: 1.5rem 0;
+    color: $color-black;
+    width: 80%;
+    height: 1rem;
+    border-radius: 100px;
+    background-color: $color-black;
+    animation: animateColor 3000ms ease-in-out infinite;
+  }
+  &__text {
+    margin: 1rem 0;
+    color: $color-grey-dark;
+    width: 75%;
+    height: 0.5rem;
+    border-radius: 100px;
+    background-color: $color-grey-dark;
+    animation: animateColor 3000ms ease-in-out infinite;
+  }
+}
+
+@keyframes animateColor {
+  from {
+    background-color: currentColor;
+  }
+  to {
+    background-color: lighten($color-black, 30%);
+  }
+}

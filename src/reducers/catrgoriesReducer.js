@@ -2,18 +2,18 @@ import * as types from '../actions/actionTypes';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case types.REQUEST_DATA:
+    case types.REQUEST_CATEGORIES_DATA:
       return {
         ...state,
         isFetching: true,
       };
-    case types.FETCH_DATA_SUCCESS:
+    case types.FETCH_CATEGORIES_SUCCESS:
       return {
         ...state,
         data: [...action.data],
         isFetching: false,
       };
-    case types.FETCH_DATA_FAILURE:
+    case types.FETCH_CATEGORIES_FAILURE:
       return {
         ...state,
         isFetching: false,
