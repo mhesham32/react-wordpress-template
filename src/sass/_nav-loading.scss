@@ -1,0 +1,22 @@
+.nav-loading {
+  &__item {
+    width: 5rem;
+    background-color: $color-black;
+    height: 1.5rem;
+    margin-left: 1.5rem;
+    border-radius: 100px;
+    animation: loading 800ms infinite ease-in-out;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-color: $color-black;
+  }
+  50% {
+    background-color: $color-grey-dark;
+  }
+  100% {
+    background-color: #000;
+  }
+}
