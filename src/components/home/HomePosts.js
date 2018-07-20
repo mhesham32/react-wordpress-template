@@ -40,7 +40,7 @@ class HomePosts extends Component {
     }
     return (
       <div className="home__posts conatiner">
-        <div className="row  home__flex">
+        <div className="row justify-content-center home__flex">
           {isFetching ? (
             <Fragment>
               <LoadingPost />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'jquery';
@@ -16,13 +16,15 @@ const store = configureStore();
 const Routes = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <div className="container">
+      <Fragment>
         <Nav />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
+        <div className="container">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Fragment>
     </BrowserRouter>
   </Provider>
 );

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MiniPost = ({ title, image, desc }) => (
-  <div className="mini-post__container col col-lg-4 col-sm-12 col-md-4">
+  <div className="mini-post__container ">
     <div className="mini-post ">
       <div className="mini-post__image--container">
         <div

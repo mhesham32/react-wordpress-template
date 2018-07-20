@@ -11,7 +11,8 @@
 
   &__container {
     padding: 1rem;
-    align-self: auto;
+    @extend .align-self-start;
+    @extend .col-md-6;
   }
 
   &__image {
