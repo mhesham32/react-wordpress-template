@@ -6,17 +6,21 @@ export default (state = {}, action) => {
       return {
         ...state,
         isFetching: true,
+        error: false,
       };
     case types.FETCH_POSTS_SUCCESS:
       return {
         ...state,
         data: [...action.data],
         isFetching: false,
+        error: false,
       };
     case types.FETCH_POSTS_FAILURE:
       return {
         ...state,
         isFetching: false,
+        error: true,
+        errorMessage: action.error,
       };
 
     default:
@@ -41,3 +45,8 @@ export const getPostsMiniData = ({ posts: { data } }) => {
 };
 
 export const getIsFetching = ({ posts }) => posts.isFetching;
+
+export const getError = ({ posts }) => ({
+  error: posts.error,
+  errorMessage: posts.errorMessage,
+});

@@ -11,6 +11,7 @@
 
   &__container {
     padding: 1rem;
+    align-self: auto;
   }
 
   &__image {
@@ -22,6 +23,7 @@
     width: 100%;
     background: center center;
     background-size: cover;
+    background-color: $color-grey-dark;
   }
 
   &__title {

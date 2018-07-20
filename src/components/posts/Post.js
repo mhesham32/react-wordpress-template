@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MiniPost = ({ title, image, desc }) => (
   <div className="mini-post__container col col-lg-4 col-sm-12 col-md-4">
@@ -17,5 +18,11 @@ const MiniPost = ({ title, image, desc }) => (
     </div>
   </div>
 );
+
+MiniPost.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+};
 
 export default MiniPost;

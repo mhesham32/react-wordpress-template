@@ -10,7 +10,7 @@ const fetchPostsSuccess = data => ({
   data,
 });
 
-const fetchPostsFailure = () => ({ type: types.FETCH_POSTS_FAILURE });
+const fetchPostsFailure = error => ({ type: types.FETCH_POSTS_FAILURE, error });
 
 export const fetchAllPosts = () => dispatch => {
   dispatch(requestPostsData());
@@ -19,7 +19,7 @@ export const fetchAllPosts = () => dispatch => {
       dispatch(fetchPostsSuccess(response));
     },
     err => {
-      dispatch(fetchPostsFailure);
+      dispatch(fetchPostsFailure(err.message || 'some thing went wrong!!'));
     }
   );
 };
