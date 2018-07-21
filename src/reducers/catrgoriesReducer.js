@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-export default (state = {}, action) => {
+export default (state = { isFetching: false }, action) => {
   switch (action.type) {
     case types.REQUEST_CATEGORIES_DATA:
       return {

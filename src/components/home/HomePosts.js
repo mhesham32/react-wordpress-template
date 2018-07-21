@@ -9,7 +9,7 @@ import {
   getError,
 } from '../../reducers/postsReducer';
 import LoadingPost from '../posts/LoadingPost';
-import MiniPost from '../posts/Post';
+import MiniPost from '../posts/MiniPost';
 
 class HomePosts extends Component {
   static propTypes = {

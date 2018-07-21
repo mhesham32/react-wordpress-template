@@ -1,28 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-const MiniPost = ({ title, image, desc }) => (
-  <div className="mini-post__container ">
-    <div className="mini-post ">
-      <div className="mini-post__image--container">
-        <div
-          className="mini-post__image"
-          style={{ backgroundImage: `url(${image})` }}
-        />
+export default class Post extends Component {
+  render() {
+    return (
+      <div>
+        <h1 className="display-4">HI i'm a Post!</h1>
       </div>
-      <h1 className="mini-post__title">{title}</h1>
-      <p
-        className="mini-post__desc"
-        dangerouslySetInnerHTML={{ __html: desc }}
-      />
-    </div>
-  </div>
-);
-
-MiniPost.propTypes = {
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-};
-
-export default MiniPost;
+    );
+  }
+}

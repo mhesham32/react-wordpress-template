@@ -10,6 +10,7 @@ import Nav from './components/nav/Nav';
 import Home from './components/home/Home';
 import NotFound from './components/NotFound';
 import configureStore from './store/configureStore';
+import Post from './components/posts/Post';
 
 const store = configureStore();
 
@@ -21,6 +22,7 @@ const Routes = () => (
         <div className="container">
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/post/:slug" component={Post} />
             <Route component={NotFound} />
           </Switch>
         </div>
