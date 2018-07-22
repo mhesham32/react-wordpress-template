@@ -15,7 +15,7 @@ const MiniPost = ({ title, image, desc, linkText, slug, id }) => (
       <p className="mini-post__desc">
         {desc}
         <p>
-          <Link to={`/post/${slug}`}>{linkText}</Link>
+          <Link to={`/post/${slug}/${id}`}>{linkText}</Link>
         </p>
       </p>
     </div>

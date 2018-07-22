@@ -22,7 +22,7 @@ const Routes = () => (
         <div className="container">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/post/:slug" component={Post} />
+            <Route path="/post/:slug/:id" component={Post} />
             <Route component={NotFound} />
           </Switch>
         </div>
