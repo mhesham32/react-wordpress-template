@@ -12,16 +12,32 @@ const LoadingOrError = WrappedComponent =>
       error: PropTypes.bool.isRequired,
       errorMessage: PropTypes.string,
       postContent: PropTypes.string,
+      type: PropTypes.string,
     };
 
     static defaultProps = {
       errorMessage: '',
       postContent: '',
+      type: '',
     };
 
     componentDidMount() {
       this.props.fetchData();
     }
+
+    renderLoading = () =>
+      this.props.type === 'post' ? (
+        <div className="row justify-content-center">
+          <LoadingPost />
+        </div>
+      ) : (
+        <div className="row justify-content-center">
+          <LoadingPost />
+          <LoadingPost />
+          <LoadingPost />
+          <LoadingPost />
+        </div>
+      );
 
     render() {
       const {
@@ -43,12 +59,7 @@ const LoadingOrError = WrappedComponent =>
       return (
         <React.Fragment>
           {isFetching ? (
-            <div className="row justify-content-center">
-              <LoadingPost />
-              <LoadingPost />
-              <LoadingPost />
-              <LoadingPost />
-            </div>
+            this.renderLoading()
           ) : (
             <WrappedComponent {...rest} postContent={postContent} />
           )}
