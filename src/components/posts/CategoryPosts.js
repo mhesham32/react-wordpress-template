@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchAllPosts } from '../../actions/posts';
+import { fetchCategoryData } from '../../actions/categories';
 import {
   getPostsMiniData,
   getIsFetching,
   getError,
-} from '../../reducers/postsReducer';
-import MiniPost from '../posts/MiniPost';
-import HandleFetchingHoc from '../HOC/LoadingOrError';
+} from '../../reducers/categoryPostsReducer';
+import MiniPost from './MiniPost';
+import HandleFetchinHoc from '../HOC/LoadingOrError';
 
-class HomePosts extends Component {
+class CategoryPosts extends Component {
   static propTypes = {
     allPosts: PropTypes.array.isRequired,
   };
@@ -29,7 +29,7 @@ class HomePosts extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { error, errorMessage } = getError(state);
   return {
     allPosts: getPostsMiniData(state),
@@ -39,7 +39,18 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = (
+  dispatch,
+  {
+    match: {
+      params: { id },
+    },
+  }
+) => ({
+  fetchData: () => dispatch(fetchCategoryData(id)),
+});
+
 export default connect(
   mapStateToProps,
-  { fetchData: fetchAllPosts }
-)(HandleFetchingHoc(HomePosts));
+  mapDispatchToProps
+)(HandleFetchinHoc(CategoryPosts));

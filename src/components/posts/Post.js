@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPostData } from '../../actions/posts';
-import LoadingOrError from '../HOC/LoadingOrError';
+import HandleFetchingHoc from '../HOC/LoadingOrError';
 import { getPostData } from '../../reducers/postReducer';
 
 class Post extends Component {
@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoadingOrError(Post));
+)(HandleFetchingHoc(Post));

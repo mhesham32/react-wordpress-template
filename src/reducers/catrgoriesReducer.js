@@ -38,16 +38,22 @@ export const getRoutesData = ({ categories }) => {
       const isChild = element.parent > 0;
 
       if (isParent) {
-        children = findChildren(data, element).map(child => child.name);
+        children = findChildren(data, element).map(child => ({
+          name: child.name,
+          slug: child.slug,
+          id: child.id,
+        }));
       }
 
       const dropdown = children.length > 0;
       const { name } = element;
       return {
         name,
+        slug: element.slug,
         dropdown,
         links: [...children],
         isChild,
+        id: element.id,
       };
     });
     return routes;

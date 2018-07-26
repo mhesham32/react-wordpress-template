@@ -5,18 +5,16 @@ import { Link } from 'react-router-dom';
 const MiniPost = ({ title, image, desc, linkText, slug, id }) => (
   <div className="mini-post__container ">
     <div className="mini-post ">
-      <div className="mini-post__image--container">
+      <Link to={`/post/${slug}/${id}`} className="mini-post__image--container">
         <div
           className="mini-post__image"
           style={{ backgroundImage: `url(${image})` }}
         />
-      </div>
+      </Link>
       <h1 className="mini-post__title">{title}</h1>
-      <p className="mini-post__desc">
-        {desc}
-        <p>
-          <Link to={`/post/${slug}/${id}`}>{linkText}</Link>
-        </p>
+      <p className="mini-post__desc">{desc}</p>
+      <p>
+        <Link to={`/post/${slug}/${id}`}>{linkText}</Link>
       </p>
     </div>
   </div>

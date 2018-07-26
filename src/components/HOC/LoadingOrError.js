@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import LoadingPost from '../posts/LoadingPost';
 
-const LoadingOrError = WrappedComponent =>
+const HandleFetchingHoc = WrappedComponent =>
   class LoadingOrErrorComp extends React.Component {
     static propTypes = {
       fetchData: PropTypes.func.isRequired,
@@ -23,6 +23,12 @@ const LoadingOrError = WrappedComponent =>
 
     componentDidMount() {
       this.props.fetchData();
+    }
+
+    componentDidUpdate(prevProps) {
+      if (prevProps.match !== this.props.match) {
+        this.props.fetchData();
+      }
     }
 
     renderLoading = () =>
@@ -68,4 +74,4 @@ const LoadingOrError = WrappedComponent =>
     }
   };
 
-export default LoadingOrError;
+export default HandleFetchingHoc;

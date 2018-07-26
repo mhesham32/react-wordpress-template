@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import categories from '../reducers/catrgoriesReducer';
 import posts from '../reducers/postsReducer';
 import post from '../reducers/postReducer';
+import categoryPosts from '../reducers/categoryPostsReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -12,6 +13,7 @@ export default () => {
       categories,
       posts,
       post,
+      categoryPosts,
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

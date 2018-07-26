@@ -11,6 +11,7 @@ import Home from './components/home/Home';
 import NotFound from './components/NotFound';
 import configureStore from './store/configureStore';
 import Post from './components/posts/Post';
+import CategoryPosts from './components/posts/CategoryPosts';
 
 const store = configureStore();
 
@@ -23,6 +24,7 @@ const Routes = () => (
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/post/:slug/:id" component={Post} />
+            <Route path="/category/:slug/:id" component={CategoryPosts} />
             <Route component={NotFound} />
           </Switch>
         </div>
