@@ -29,7 +29,8 @@ const NavItem = ({ active, dropdown, name, links, isChild, id }) =>
       </div>
     </li>
   ) : (
-    !isChild && (
+    !isChild &&
+    name !== 'Uncategorized' && (
       <li className={`nav-item ${active && 'active'}`}>
         <Link
           className="nav-link"

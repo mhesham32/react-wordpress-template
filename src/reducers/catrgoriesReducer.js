@@ -60,3 +60,8 @@ export const getRoutesData = ({ categories }) => {
   }
   return [];
 };
+
+export const getCurrentRoute = (state, id) =>
+  state.categories.data
+    ? getRoutesData(state).filter(route => route.id === Number(id))[0]
+    : { slug: 'categoryName' };

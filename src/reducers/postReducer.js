@@ -42,8 +42,9 @@ export const getPostData = ({ post }) => {
       errorMessage: post.errorMessage,
       postContent: post.postData.content ? post.postData.content.rendered : '',
       title: post.postData.title.rendered,
-      headerImage: post.postData.better_featured_image.source_url,
+      headerImage: post.postData.featured_media,
       type: 'post',
+      slug: post.postData.slug,
     };
   }
   return {

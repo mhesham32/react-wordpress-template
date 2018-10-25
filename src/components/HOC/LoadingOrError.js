@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import LoadingPost from '../posts/LoadingPost';
+import { Redirect } from 'react-router-dom';
 
 const HandleFetchingHoc = WrappedComponent =>
   class LoadingOrErrorComp extends React.Component {
@@ -13,16 +14,29 @@ const HandleFetchingHoc = WrappedComponent =>
       errorMessage: PropTypes.string,
       postContent: PropTypes.string,
       type: PropTypes.string,
+      slug: PropTypes.string,
     };
 
     static defaultProps = {
       errorMessage: '',
       postContent: '',
       type: '',
+      slug: '',
     };
 
+    componentWillMount() {}
+
     componentDidMount() {
-      this.props.fetchData();
+      this.props.fetchData().then(() => {
+        const { slug, type } = this.props;
+        if (slug) {
+          if (slug !== this.props.match.params.slug && type === 'post') {
+            this.props.history.push(
+              `/post/${slug}/${this.props.match.params.id}`
+            );
+          }
+        }
+      });
     }
 
     componentDidUpdate(prevProps) {
@@ -52,6 +66,8 @@ const HandleFetchingHoc = WrappedComponent =>
         errorMessage,
         fetchData,
         postContent,
+        slug,
+        type,
         ...rest
       } = this.props;
       if (error) {
@@ -62,6 +78,13 @@ const HandleFetchingHoc = WrappedComponent =>
           </div>
         );
       }
+      // if (slug) {
+      //   if (slug !== this.props.match.params.slug && type === 'post') {
+      //     return (
+      //       <Redirect to={`/post/${slug}/${this.props.match.params.id}`} />
+      //     );
+      //   }
+      // }
       return (
         <React.Fragment>
           {isFetching ? (
