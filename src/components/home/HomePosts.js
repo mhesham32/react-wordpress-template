@@ -22,7 +22,9 @@ class HomePosts extends Component {
     return (
       <div className="home__posts conatiner">
         <div className="row justify-content-center home__flex">
-          {allPosts.map(post => <MiniPost {...post} key={post.title} />)}
+          {allPosts.map(post => (
+            <MiniPost {...post} key={post.title} linkText="Read More..." />
+          ))}
         </div>
       </div>
     );

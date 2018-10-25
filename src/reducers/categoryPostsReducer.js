@@ -35,7 +35,7 @@ export const getPostsMiniData = ({ categoryPosts: { data } }) => {
     const posts = data.map(post => ({
       id: post.id,
       categoryId: post.categories[0],
-      title: post.title.rendered,
+      title: post.title.rendered.replace('&nbsp;', ' ').replace('&#8217;', "'"),
       desc: $(post.excerpt.rendered)
         .eq(0)
         .text(),
@@ -43,8 +43,8 @@ export const getPostsMiniData = ({ categoryPosts: { data } }) => {
         .find('a')
         .text(),
       slug: post.slug,
-      image: post.better_featured_image
-        ? post.better_featured_image.source_url
+      image: post.jetpack_featured_media_url
+        ? post.jetpack_featured_media_url
         : '',
     }));
     console.log({ posts });

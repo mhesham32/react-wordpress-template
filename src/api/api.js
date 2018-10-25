@@ -1,7 +1,7 @@
 export const fetchDataByslug = async slug => {
   // http://reactwordpress.onlinewebshop.net/wp-json/wp/v2/
   const res = await fetch(
-    `https://public-api.wordpress.com/wp/v2/sites/aflamnote.wordpress.com/${slug}`
+    `https://public-api.wordpress.com/wp/v2/sites/webdevapitest.wordpress.com/${slug}`
   );
   const Headers = res.headers;
   console.log(Headers.get('X-WP-TotalPages'));

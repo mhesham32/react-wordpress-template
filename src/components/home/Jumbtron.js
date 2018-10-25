@@ -5,13 +5,13 @@ const Jumbotron = () => (
   <div className="jumbotron">
     <h1 className="display-4">React Blog!</h1>
     <p className="lead">
-      This is a simple hero unit, a simple jumbotron-style component for calling
-      extra attention to featured content or information.
+      This is a simple wordpress template made with React.js library you can
+      post or change its view with your wordpress back-end
     </p>
     <hr className="my-4" />
     <p>
-      It uses utility classes for typography and spacing to space content out
-      within the larger container.
+      Disclaimer the posts in this Blog isn't mine I put random pieces of posts
+      from various websites to fill it instead of using dummy text
     </p>
     <Link className="btn btn-primary btn-lg" to="/about" role="button">
       Learn more

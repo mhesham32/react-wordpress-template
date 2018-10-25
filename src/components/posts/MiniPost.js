@@ -11,7 +11,7 @@ const MiniPost = ({ title, image, desc, linkText, slug, id }) => (
           style={{ backgroundImage: `url(${image})` }}
         />
       </Link>
-      <h1 className="mini-post__title">{title}</h1>
+      <h1 className="mini-post__title">{title.replace(/&NBSP;/, ' ')}</h1>
       <p className="mini-post__desc">{desc}</p>
       <p>
         <Link to={`/post/${slug}/${id}`}>{linkText}</Link>

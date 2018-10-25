@@ -41,8 +41,10 @@ export const getPostData = ({ post }) => {
       error: post.error,
       errorMessage: post.errorMessage,
       postContent: post.postData.content ? post.postData.content.rendered : '',
-      title: post.postData.title.rendered,
-      headerImage: post.postData.featured_media,
+      title: post.postData.title.rendered
+        .replace('&nbsp;', ' ')
+        .replace('&#8217;', "'"),
+      headerImage: post.postData.jetpack_featured_media_url,
       type: 'post',
       slug: post.postData.slug,
     };
