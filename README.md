@@ -1,4 +1,4 @@
-**Wordpress React template **
+**Wordpress React template**
 
 this is a simple template made with React based on Wordpress rest API
 
