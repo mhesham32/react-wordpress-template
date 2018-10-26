@@ -27,9 +27,10 @@ export const fetchCateogries = () => dispatch => {
 
 const requestCategoryData = () => ({ type: types.REQUEST_CATEGORY_DATA });
 
-const fetchCategorySuccess = data => ({
+const fetchCategorySuccess = (data, pages) => ({
   type: types.FETCH_CATEGORY_SUCCESS,
   data,
+  pages,
 });
 
 const fetchCategoryFailure = error => ({
@@ -37,9 +38,9 @@ const fetchCategoryFailure = error => ({
   error,
 });
 
-export const fetchCategoryData = id => dispatch => {
+export const fetchCategoryData = (id, page = 1) => dispatch => {
   dispatch(requestCategoryData());
-  return fromApi.fetchDataByslug(`posts?categories=${id}`).then(
+  return fromApi.fetchDataByslug(`posts?categories=${id}&&page=${page}`).then(
     response => {
       dispatch(fetchCategorySuccess(response.data, response.pages));
     },

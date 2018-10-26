@@ -4,8 +4,6 @@ export const fetchDataByslug = async slug => {
     `https://public-api.wordpress.com/wp/v2/sites/webdevapitest.wordpress.com/${slug}`
   );
   const Headers = res.headers;
-  console.log({ [slug]: Headers.get('X-WP-TotalPages') });
-
   if (res.status !== 200) {
     throw new Error("Status isn't OK");
   }
@@ -20,4 +18,4 @@ export const fetchDataByslug = async slug => {
 };
 
 export const fetchCategories = () => fetchDataByslug('categories?per_page=20');
-export const fetchPosts = () => fetchDataByslug('posts');
+export const fetchPosts = page => fetchDataByslug(`posts?page=${page}`);

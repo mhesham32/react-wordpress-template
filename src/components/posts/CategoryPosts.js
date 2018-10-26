@@ -20,6 +20,7 @@ class CategoryPosts extends Component {
     slug: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     match: PropTypes.object.isRequired,
+    pages: PropTypes.number.isRequired,
   };
 
   render() {
@@ -62,6 +63,7 @@ const mapStateToProps = (
     allPosts: getPostsMiniData(state),
     isFetching: getIsFetching(state),
     currentRoute: getCurrentRoute(state, id),
+    pages: parseInt(state.categoryPosts.pages),
     error,
     errorMessage,
   };
@@ -75,7 +77,7 @@ const mapDispatchToProps = (
     },
   }
 ) => ({
-  fetchData: () => dispatch(fetchCategoryData(id)),
+  fetchData: page => dispatch(fetchCategoryData(id, page)),
 });
 
 export default connect(

@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Pagination extends React.Component {
   static propTypes = {
     pages: PropTypes.number.isRequired,
+    fetchData: PropTypes.func.isRequired,
   };
 
   state = {
-    numberOfPages: this.props.pages || 1,
     currentPage: 1,
     hasPrevious: false,
     hasNext: false,
@@ -39,49 +38,60 @@ class Pagination extends React.Component {
   };
 
   handleChangePage = numberOfPage => {
-    this.setState(
-      { currentPage: numberOfPage }
-    );
+    this.setState({ currentPage: numberOfPage });
   };
 
   handleNextClick = () => {
-    const {hasNext,currentPage, numberOfPages} = this.state;
+    const numberOfPages = this.props.pages;
+    const { hasNext, currentPage } = this.state;
     const nextCurrent = currentPage + 1;
-    if(hasNext && nextCurrent <= numberOfPages) {
-      this.setState({currentPage:nextCurrent});
+    if (hasNext && nextCurrent <= numberOfPages) {
+      this.setState({ currentPage: nextCurrent });
     }
-  }
+  };
 
   handlePreviousClick = () => {
-    const {hasPrevious,currentPage} = this.state;
+    const { hasPrevious, currentPage } = this.state;
     const previousCurrent = currentPage - 1;
-    if(hasPrevious && previousCurrent >= 1) {
-      this.setState({currentPage:previousCurrent});
+    if (hasPrevious && previousCurrent >= 1) {
+      this.setState({ currentPage: previousCurrent });
     }
-  }
+  };
+
+  fetchDataByPage = page => {
+    const { fetchData } = this.props;
+    window.scroll(0, 0);
+    return fetchData(page);
+  };
 
   afterCurrentPageChange = currentPage => {
+    const numberOfPages = this.props.pages;
+
     if (currentPage > 1) {
       this.setState({ hasPrevious: true });
     }
     if (currentPage === 1) {
       this.setState({ hasPrevious: false });
     }
-    if (currentPage === this.state.numberOfPages) {
+    if (currentPage === numberOfPages) {
       this.setState({ hasNext: false });
     } else {
       this.setState({ hasNext: true });
     }
+    this.fetchDataByPage(currentPage);
   };
 
   render() {
-    const { numberOfPages, hasNext, hasPrevious, currentPage } = this.state;
+    const { hasNext, hasPrevious, currentPage } = this.state;
+    const numberOfPages = this.props.pages;
     return (
       <div className="pagination-container">
         <nav aria-label="...">
           <ul className="pagination pagination-lg">
             <li className={`page-item ${hasPrevious ? null : 'disabled'}`}>
-              <button className="page-link" onClick={this.handlePreviousClick}>Previous</button>
+              <button className="page-link" onClick={this.handlePreviousClick}>
+                Previous
+              </button>
             </li>
             {this.makeArray(numberOfPages).map(item => (
               <li
@@ -98,7 +108,9 @@ class Pagination extends React.Component {
               </li>
             ))}
             <li className={`page-item ${hasNext ? null : 'disabled'}`}>
-              <button className="page-link" onClick={this.handleNextClick}>Next</button>
+              <button className="page-link" onClick={this.handleNextClick}>
+                Next
+              </button>
             </li>
           </ul>
         </nav>

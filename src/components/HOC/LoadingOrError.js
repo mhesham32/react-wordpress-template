@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import LoadingPost from '../posts/LoadingPost';
-import { Redirect } from 'react-router-dom';
+import Pagination from '../shared/Pagination';
 
 const HandleFetchingHoc = WrappedComponent =>
   class LoadingOrErrorComp extends React.Component {
@@ -13,8 +13,11 @@ const HandleFetchingHoc = WrappedComponent =>
       error: PropTypes.bool.isRequired,
       errorMessage: PropTypes.string,
       postContent: PropTypes.string,
+      match: PropTypes.object.isRequired,
+      history: PropTypes.object.isRequired,
       type: PropTypes.string,
       slug: PropTypes.string,
+      pages: PropTypes.number.isRequired,
     };
 
     static defaultProps = {
@@ -23,8 +26,6 @@ const HandleFetchingHoc = WrappedComponent =>
       type: '',
       slug: '',
     };
-
-    componentWillMount() {}
 
     componentDidMount() {
       this.props.fetchData().then(() => {
@@ -66,8 +67,7 @@ const HandleFetchingHoc = WrappedComponent =>
         errorMessage,
         fetchData,
         postContent,
-        slug,
-        type,
+        pages,
         ...rest
       } = this.props;
       if (error) {
@@ -78,13 +78,6 @@ const HandleFetchingHoc = WrappedComponent =>
           </div>
         );
       }
-      // if (slug) {
-      //   if (slug !== this.props.match.params.slug && type === 'post') {
-      //     return (
-      //       <Redirect to={`/post/${slug}/${this.props.match.params.id}`} />
-      //     );
-      //   }
-      // }
       return (
         <React.Fragment>
           {isFetching ? (
@@ -92,6 +85,7 @@ const HandleFetchingHoc = WrappedComponent =>
           ) : (
             <WrappedComponent {...rest} postContent={postContent} />
           )}
+          {pages > 1 && <Pagination fetchData={fetchData} pages={pages} />}
         </React.Fragment>
       );
     }

@@ -13,9 +13,9 @@ const fetchPostsSuccess = (data, pages) => ({
 
 const fetchPostsFailure = error => ({ type: types.FETCH_POSTS_FAILURE, error });
 
-export const fetchAllPosts = () => dispatch => {
+export const fetchAllPosts = (page = 1) => dispatch => {
   dispatch(requestPostsData());
-  return fromApi.fetchPosts().then(
+  return fromApi.fetchPosts(page).then(
     response => {
       dispatch(fetchPostsSuccess(response.data, response.pages));
     },
