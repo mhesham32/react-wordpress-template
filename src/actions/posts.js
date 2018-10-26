@@ -5,9 +5,10 @@ const requestPostsData = () => ({
   type: types.REQUEST_POSTS_DATA,
 });
 
-const fetchPostsSuccess = data => ({
+const fetchPostsSuccess = (data, pages) => ({
   type: types.FETCH_POSTS_SUCCESS,
   data,
+  pages,
 });
 
 const fetchPostsFailure = error => ({ type: types.FETCH_POSTS_FAILURE, error });
@@ -16,7 +17,7 @@ export const fetchAllPosts = () => dispatch => {
   dispatch(requestPostsData());
   return fromApi.fetchPosts().then(
     response => {
-      dispatch(fetchPostsSuccess(response));
+      dispatch(fetchPostsSuccess(response.data, response.pages));
     },
     err => {
       dispatch(fetchPostsFailure(err.message || 'some thing went wrong!!'));
@@ -34,7 +35,7 @@ export const fetchPostData = id => dispatch => {
   dispatch(requestPostData());
   return fromApi.fetchDataByslug(`posts/${id}`).then(
     response => {
-      dispatch(fetchPostSuccess(response));
+      dispatch(fetchPostSuccess(response.data, response.pages));
     },
     err => {
       dispatch(fetchPostFailure(err.message || 'some thing went wrong!!'));

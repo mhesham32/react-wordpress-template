@@ -1,7 +1,10 @@
 import $ from 'jquery';
 import * as types from '../actions/actionTypes';
 
-export default (state = { isFetching: false, error: false }, action) => {
+export default (
+  state = { isFetching: false, error: false, pages: 1 },
+  action
+) => {
   switch (action.type) {
     case types.REQUEST_POSTS_DATA:
       return {
@@ -15,6 +18,7 @@ export default (state = { isFetching: false, error: false }, action) => {
         data: [...action.data],
         isFetching: false,
         error: false,
+        pages: action.pages,
       };
     case types.FETCH_POSTS_FAILURE:
       return {
