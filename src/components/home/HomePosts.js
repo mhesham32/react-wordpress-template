@@ -10,14 +10,16 @@ import {
 } from '../../reducers/postsReducer';
 import MiniPost from '../posts/MiniPost';
 import HandleFetchingHoc from '../HOC/LoadingOrError';
+import Pagination from '../shared/Pagination';
 
 class HomePosts extends Component {
   static propTypes = {
     allPosts: PropTypes.array.isRequired,
+    pages: PropTypes.number.isRequired,
   };
 
   render() {
-    const { allPosts } = this.props;
+    const { allPosts, pages } = this.props;
 
     return (
       <div className="home__posts conatiner">
@@ -26,6 +28,7 @@ class HomePosts extends Component {
             <MiniPost {...post} key={post.title} linkText="Read More..." />
           ))}
         </div>
+        <Pagination pages={pages} />
       </div>
     );
   }
@@ -38,6 +41,7 @@ const mapStateToProps = state => {
     isFetching: getIsFetching(state),
     error,
     errorMessage,
+    pages: parseInt(state.posts.pages),
   };
 };
 

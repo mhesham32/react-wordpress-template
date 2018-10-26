@@ -30,6 +30,12 @@ img {
   max-width: 100%;
 }
 
+.pagination-container {
+  display: flex;
+  padding: 2rem 0;
+  justify-content: center;
+}
+
 .App {
   text-align: center;
 }
