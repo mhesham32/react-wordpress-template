@@ -7,7 +7,7 @@ export const fetchDataByslug = async slug => {
   if (res.status !== 200) {
     throw new Error("Status isn't OK");
   }
-
+  console.log({ PAGES: Headers.get('X-WP-TotalPages') });
   const data = await res.json();
 
   if (data.length === 0) {
