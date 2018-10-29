@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Jumbotron = () => (
   <div className="jumbotron">
@@ -13,9 +12,13 @@ const Jumbotron = () => (
       Disclaimer the posts in this Blog isn't mine I put random pieces of posts
       from various websites to fill it instead of using dummy text
     </p>
-    <Link className="btn btn-primary btn-lg" to="/about" role="button">
+    <a
+      className="btn btn-primary btn-lg"
+      href="https://mostafahesham.com/post/Simple-Wordpress-React-template"
+      role="button"
+    >
       Learn more
-    </Link>
+    </a>
   </div>
 );
 
